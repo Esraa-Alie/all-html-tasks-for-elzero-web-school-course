@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>from l28 to l30</title>
+  </head>
+  <body>
+    <form method="post">
+      <label for="token" hidden></label>
+      <input
+        id="token"
+        name="token"
+        type="text"
+        value="b92f1fc2fce391ad7af633723afd3055"
+        hidden
+      />
+      <label for="email"> Emai</label>
+      <input id="email" name="email" type="email" readonly value="o@o.com" />
+      <label for="username">User name</label>
+      <input
+        id="username"
+        name="username"
+        type="text"
+        autofocus
+        minlength="5"
+        maxlength="20"
+      />
+      <p>programing skills</p>
+      <ul style="list-style-type: none">
+        <li>
+          <input name="ps" value="ps" type="checkbox" />
+          <label for="ps">Problem Solving</label>
+        </li>
+        <li>
+          <input name="ps" value="ls" type="checkbox" />
+          <label for="lt"> Logical Thinking</label>
+        </li>
+        <li>
+          <input name="ps" value="as" type="checkbox" />
+          <label for="as"> Advanced Search</label>
+        </li>
+        <li>
+          <input type="checkbox" name="ps" value="analysis" />
+          <label for="analysis"> Analysis</label>
+        </li>
+        <li>
+          <input type="checkbox" name="ps" name="planning" />
+          <label for=" Planning"> Planning</label>
+        </li>
+      </ul>
+      <p>Box Set 2</p>
+      <ul style="list-style-type: none">
+        <li>
+          <input name="bm" value="bm" type="checkbox" /><label for="bm">
+            Project Manager</label
+          >
+        </li>
+        <li>
+          <input name="bm" value="sm" type="checkbox" /><label for="sm"
+            >Scrum Master</label
+          >
+        </li>
+        <li>
+          <input name="bm" value="ba" type="checkbox" /><label for="ba"
+            >Business Analyst</label
+          >
+        </li>
+        <li>
+          <input name="bm" value="be" type="checkbox" /><label for="be"
+            >Back-End Developer</label
+          >
+        </li>
+        <li>
+          <input name="bm" value="fe" type="checkbox" /><label for="fe"
+            >Front-End Developer</label
+          >
+        </li>
+      </ul>
+    
+      <select>
+        <optgroup label="PHP">
+        <option value="1">v5.0</option>
+        <option value="2">v7.0</option>
+        <option value="3">v8.0</option>
+        <optgroup label="Python">
+        <option value="1">v2.0</option>
+        <option value="2">v3.0</option>
+        <option value="3">v3.9</option>
+      </select>
+      <br>
+      <input type="reset" name="reset" value="reset" />
+      <input type="submit" value="send" />
+    </form>
+  </body>
+</html>
+<script type="text/javascript">
+  const form = document.querySelector("form");
+
+  function atLeastOneIsChecked(checkboxes) {
+    for (const checkbox of checkboxes) {
+      if (checkbox.checked) return true;
+    }
+    return false;
+  }
+
+  function validateCheckboxes(checkboxes) {
+    const errorMessage = !atLeastOneIsChecked(checkboxes)
+      ? "At least one checkbox must be selected."
+      : "";
+    checkboxes[0].setCustomValidity(errorMessage);
+  }
+
+  function init(checkboxesSelector) {
+    const checkboxes = document.querySelectorAll(checkboxesSelector);
+    if (!checkboxes.length) return;
+
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener("change", () => {
+        validateCheckboxes(checkboxes);
+      });
+    });
+    validateCheckboxes(checkboxes);
+  }
+  init('input[name="ps"]');
+  init('input[name="bm"]');
+</script>
